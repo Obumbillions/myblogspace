@@ -52,52 +52,57 @@ newPost.addEventListener("submit", function(e) {
         })
 })
 
-
-function editPost(id) {
-    console.log(id)
-
+// here we are going to get the id of the post we want to delete
+function deletePost(id) {
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-            id: id,
-            title: postTitle.value,
-            body: postBody.value,
-            userId: 1,
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+        method: "DELETE"
     })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            let blogTitle = document.querySelectorAll('blog-titles') 
-            let blogBodies = document.querySelectorAll('blog-body')
-            console.log(blogTitle)
-            blogTitle.forEach((postTitles, index) => {
-                if (index + 1 === id) {
-                    if (data.title !== "") {
-                        postTitles.innerHTML = data.title
-                    }
-                }
-
-            })
-
-            blogBodies.forEach((blogBody, index) => {
-                if (index + 1 === id) {
-                    if (data.postBody !== "") {
-                        blogBodies.innerHTML = data.postBody
-                    }
-                }
-
-            })
-
-        });
+        .then(res => res.json())
+        .then(data => {
+            postsArr = postsArr.filter(post => post.id !== id)
+            renderPosts()
+        })
 }
 
 
+// function editPost(id) {
+//     console.log(id)
 
+//     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+//         method: 'PUT',
+//         body: JSON.stringify({
+//             id: id,
+//             title: postTitle.value,
+//             body: postBody.value,
+//             userId: 1,
+//         }),
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8',
+//         },
+//     })
+//         .then((res) => res.json())
+//         .then((data) => {
+//             console.log(data)
+//             let blogTitle = document.querySelectorAll('blog-titles') 
+//             let blogBodies = document.querySelectorAll('blog-body')
+//             console.log(blogTitle)
+//             blogTitle.forEach((postTitles, index) => {
+//                 if (index + 1 === id) {
+//                     if (data.title !== "") {
+//                         postTitles.innerHTML = data.title
+//                     }
+//                 }
 
+//             })
 
+//             blogBodies.forEach((blogBody, index) => {
+//                 if (index + 1 === id) {
+//                     if (data.postBody !== "") {
+//                         blogBodies.innerHTML = data.postBody
+//                     }
+//                 }
 
-   
+//             })
+
+//         });
+// }
