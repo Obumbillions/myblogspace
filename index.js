@@ -1,7 +1,10 @@
 const newPost = document.getElementById("new-post")
 const blogList = document.getElementById("blog-list")
+const blogCont = document.getElementById("blog-cont")
+let title = document.querySelector('#title')
 let postTitle = document.getElementById("title")
 let postBody = document.getElementById("content")
+let body = document.querySelector('#body')
 let postsArr = []
 
 function renderPosts() {
@@ -14,7 +17,7 @@ function renderPosts() {
                 <p>${post.body}</p>
                 <div class="d-flex justify-content-between">
                     <button class="btn btn-success" id="view-btn" onclick="viewedPost(${post.id})">View</button>
-                    <button class="btn btn-primary" onclick="editPost(${post.id})">Edit</button>
+                    <button class="btn btn-primary" onclick="updatePost(${post.id})">Update</button>
                     <button class="btn btn-danger" onclick="deletePost(${post.id})">Delete</button>
                 </div>
             </div>
@@ -53,7 +56,7 @@ newPost.addEventListener("submit", function(e) {
 })
 
 
-function editPost(id) {
+function updatePost(id) {
     console.log(id)
 
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
@@ -70,14 +73,14 @@ function editPost(id) {
     })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
-            let blogTitle = document.querySelectorAll('blog-titles') 
-            let blogBodies = document.querySelectorAll('blog-body')
+            // console.log(data)
+            let blogTitle = document.querySelectorAll('.blog-titles') 
+            let blogBodies = document.querySelectorAll('.blog-body')
             console.log(blogTitle)
-            blogTitle.forEach((postTitles, index) => {
+            blogTitle.forEach((blogTitle, index) => {
                 if (index + 1 === id) {
                     if (data.title !== "") {
-                        postTitles.innerHTML = data.title
+                        blogTitle.innerHTML = data.title
                     }
                 }
 
@@ -85,8 +88,8 @@ function editPost(id) {
 
             blogBodies.forEach((blogBody, index) => {
                 if (index + 1 === id) {
-                    if (data.postBody !== "") {
-                        blogBodies.innerHTML = data.postBody
+                    if (data.content !== "") {
+                        blogBody.innerHTML = data.content
                     }
                 }
 
@@ -94,3 +97,49 @@ function editPost(id) {
 
         });
 }
+
+function openSingle(id) {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            localStorage.setItem('viewedPost', JSON.stringify(data))
+            window.location.href = 'indexTwo.html'
+            console.log(data)
+        });
+}
+
+function deletePost(id) {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        method: 'DELETE',
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            postsArr = postsArr.filter(blog => blog.id !== id)
+            console.log(postsArr)
+            // use a function to display the UI
+            renderUI(postsArr)  
+        })
+
+}
+
+function renderUI (arr) {
+    let blogContainer = '';
+            arr.forEach(blog => {
+                blogContainer += `
+                <div class="post">
+                    <p>${post.id}</p>
+                    <h3>${post.title}</h3>
+                    <p>${post.body}</p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-success" id="view-btn" onclick="viewedPost(${post.id})">View</button>
+                        <button class="btn btn-primary" onclick="updatePost(${post.id})">Update</button>
+                        <button class="btn btn-danger" onclick="deletePost(${post.id})">Delete</button>
+                    </div>
+               </div>
+                `
+            });
+            blogCont.innerHTML = blogContainer;
+
+ }

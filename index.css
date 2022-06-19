@@ -23,12 +23,12 @@ textarea:focus {
     transition: background-color 400ms, border 400ms ;
 }
 
-#submit-btn:hover, #submit-btn:focus {
+#submit-btn:hover,
+ #submit-btn:focus {
     background-color: #54BAB9;
     border: 1px solid #219F94;
     outline: none;
 }
-
 
 .post {
     border-bottom: 1px solid #CDB699; 
