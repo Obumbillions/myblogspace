@@ -1,57 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
-        crossorigin="anonymous">
-        <link rel="stylesheet" href="index.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Posts</title>
+</head>
 
-    <body style="font-family: 'Montserrat', sans-serif; background-color: #FBF8F1;">
-        <nav class="m-0 d-flex align-center justify-content-left fw-bold" style=" color: #219F94; background-color: #E9DAC1;position: sticky; top: 0;box-shadow: 0px 1px 10px #CDB699;" >
-            <img src="./img/pencil45.png" style="width:2rem; height: 100%;" alt=""/>
-            <h2>BlogSpace</h2>    
-        </nav>
-        <section class="input-section" style="Padding:2em; background-color: #F7ECDE;">
-            <form class="d-flex flex-column" id="new-post">
-                <label for="title">Title</label>
-                <input id="title" type="text" placeholder="Creative title here" style="margin-bottom:.75em;padding:3px;border: 1px solid #CDB699; border-radius:5px;">        
-                <label for="content">Content </label>
-                <textarea id="content" placeholder="Type your awesome content here" style="margin-bottom:.75em; padding: 3px;border:1px solid #CDB699; border-radius:5px;"></textarea>
-                <button class="rounded-pill" id="submit-btn" style="margin-top:1em; padding:.45em;background-color: #E9DAC1;border: 1px solid #CDB699; cursor: pointer;">
-                    Create Post
-                </button>
-            </form>
-        </section>
-        <div id="blog-list">
-            <div class="post">
-                <p class="blog-id">1</p>
-                <h3 class="fw-bold blog-titles" style="margin-bottom:.35em;">Blog Title</h3>
-                <p class="blog-body"> 
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo cupiditate laborum,
-                    soluta debitis iure dolore iusto adipisci optio ipsam, sint amet dolorem possimus
-                    voluptatum. Voluptate cumque possimus autem alias maiores.
-                </p>
-                <div class="d-flex justify-content-between">
-                    <button class="btn btn-success" id="view-btn">View</button>
-                    <button class="btn btn-primary">Update</button>
-                    <button class="btn btn-danger">Delete</button>
+<body style="font-family: 'Montserrat', sans-serif; background-color: #FBF8F1;">
+    <nav class="pt-3 d-flex align-center justify-content-left fw-bold" style=" color: #219F94; background-color: #E9DAC1;position: sticky; top: 0;box-shadow: 0px 1px 10px #CDB699;" >
+        <img src="./img/pencil45.png" style="width:2rem; height: 100%;" alt=""/>
+        <h2>BlogSpace</h2>    
+    </nav>
+    <div class="top-section mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <form action="" id="post-form">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Title</label>
+                            <input class="form-control" type="text" id="title"
+                            placeholder="Creative title here">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+                            <textarea class="form-control" id="body" rows="5" placeholder="Type your awesome content here.."></textarea>
+                        </div>
+                        <div class="d-flex">
+                            <button class="btn btn-primary" type="submit">Create Post</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>     
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-        crossorigin="anonymous">
-       </script>
-        <script src="index.js"></script>
-        <script src="script.js"></script>
-    </body>
+        </div>
+    </div>
+    <div class="card-section mt-5">
+        <div class="container">
+            <div class="row" id="post-holder">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body ps-md-2">
+                            <p>1</p>
+                            <h6 id="post-title">post title</h6>
+                            <p id="post-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo cupiditate laborum,
+                                soluta debitis iure dolore iusto adipisci optio ipsam, sint amet dolorem possimus
+                                voluptatum. Voluptate cumque possimus autem alias maiores.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-primary">
+                                    Update
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                    </svg>
+                                </button>
+                                <button class="btn btn-danger">
+                                    Delete
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body ps-md-2">
+                            <p>2</p>
+                            <h6 id="post-title">post title</h6>
+                            <p id="post-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo cupiditate laborum,
+                                soluta debitis iure dolore iusto adipisci optio ipsam, sint amet dolorem possimus
+                                voluptatum. Voluptate cumque possimus autem alias maiores.</p>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-primary">
+                                    Update
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                    </svg>
+                                </button>
+                                <button class="btn btn-danger">
+                                    Delete
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
 </html>
