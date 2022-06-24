@@ -1,35 +1,12 @@
-/* * {
-    margin: 0;
-    padding: 0;
+.mobile{
+    display: none;
 }
 
-nav, .post {
-    padding: 1em 2em;
+@media screen and (max-width: 769px) {
+    .mobile{
+        display: block;
+    }
+    .desktop{
+        display: none;
+    }
 }
-
-input, textarea {
-    transition: background-color 400ms, border 400ms ;
-}
-
-input:hover, 
-input:focus, 
-textarea:hover, 
-textarea:focus {
-    border: 1px solid #219F94;
-    outline: none;
-}
-
-#submit-btn {
-    transition: background-color 400ms, border 400ms ;
-}
-
-#submit-btn:hover,
- #submit-btn:focus {
-    background-color: #54BAB9;
-    border: 1px solid #219F94;
-    outline: none;
-}
-
-.post {
-    border-bottom: 1px solid #CDB699; 
-} */
